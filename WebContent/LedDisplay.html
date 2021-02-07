@@ -21,12 +21,12 @@
 }
 </style>
 <script src="commons/jquery-1.11.3.min.js"></script>
-
+<script src="commons/jquery.ajax-cross-origin.min.js"></script>
 <body>
 
 <div class="disp-frame">
 	<div class="disp-text" id="disp-text">
-		11빨간색 글자입니다.빨간색 글자입니다.빨간색 글자입니다.빨간색 글자입니다.빨간색 글자입니다.빨간색 글자입니다.빨간색 글자입니다.
+		12221빨간색 글자입니다.빨간색 글자입니다.빨간색 글자입니다.빨간색 글자입니다.빨간색 글자입니다.빨간색 글자입니다.빨간색 글자입니다.
 	</div>
 </div>
 
@@ -36,7 +36,8 @@
 
 <script>
 $.ajax({
-	type: "post"
+	type: "get"
+	,crossOrigin : true
 	,url: "http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getMsrstnAcctoRltmMesureDnsty"
 	,data: {"ServiceKey": "CCMMqp7VkWGjXfOHliL2qYsbJbPRHed1GOQ2KEriqN4TIur8Ko8dY3bI2sMWDl9VhZhtzUR%2Fu5VUYdj36MvZGQ%3D%3D"
 		, "numOfRows": encodeURIComponent('1'), "pageNo": encodeURIComponent('1')
