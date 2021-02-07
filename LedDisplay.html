@@ -8,9 +8,10 @@
 </head>
 <style>
 .disp-frame {
-	border: 1px solid blue;
+/* 	border: 1px solid blue; */
 	width:104px;
 	height: 19px;
+	background-color: #000;
 }
 .disp-text {
 	height: 100%;
@@ -19,6 +20,8 @@
 	font-size: 13px;
 }
 </style>
+<script src="commons/jquery-1.11.3.min.js"></script>
+
 <body>
 
 <div class="disp-frame">
@@ -27,7 +30,9 @@
 	</div>
 </div>
 
-
+<script>
+$(".disp-text").css("color", "white");
+</script>
 
 </body>
 </html>
