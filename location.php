@@ -1,29 +1,34 @@
-<?php header('Content-Type: text/html; charset=utf-8'); ?>
-<?php
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-1.11.0.js"></script>
+<script>
+    $(function() {        
+        // Geolocation API에 액세스할 수 있는지를 확인
+        if (navigator.geolocation) {
+            //위치 정보를 정기적으로 얻기
+            var id = navigator.geolocation.watchPosition(
+                    function(pos) {
+                        $('#latitude').html(pos.coords.latitude);     // 위도 
+                        $('#longitude').html(pos.coords.longitude); // 경도 
+                    });
+            
+            // 버튼 클릭으로 감시를 중지           
+        } else {
+            alert("이 브라우저에서는 Geolocation이 지원되지 않습니다.")
+        }
+      
+    });
 
-ini_set( "display_errors", 1 );
-
-    $ch = curl_init();
-    $url = 'https://dapi.kakao.com/v2/local/geo/coord2address.json';
-    $queryParams = '?' . urlencode('x') . '=' .  urlencode(37.5392375); 
-    $queryParams .= '&' . urlencode('y') . '=' . urlencode(126.9003409);
-    $queryParams .= '&' . urlencode('input_coord') . '=' . 'WGS84'; /**/
-    $queryParams .= '&' . urlencode('Authorization') . ':' . 'KakaoAK 8e531e4f25af542c2141c74fd77752b6'; /**/
-    
-    
-    curl_setopt($ch, CURLOPT_URL, $url . $queryParams);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-    curl_setopt($ch, CURLOPT_HEADER, FALSE);
-    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
-    $response = curl_exec($ch);
-    
-    curl_close($ch);
    
-    
-    $json_data = json_decode($response);
-    var_dump( $url . $queryParams);
-    
-   
-  
-
-?>
+</script>
+</head>
+<body>
+    <ul>
+        <li>위도:<span id="latitude"></span></li>
+        <li>경도:<span id="longitude"></span></li>
+    </ul>    
+</body>
+</html>
